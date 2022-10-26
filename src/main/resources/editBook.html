@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library | Edit Book</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<main>
+    <h1>Library -  Edit Book</h1>
+    <form method="POST" action="/api/editBook">
+        <div id="data">
+
+        </div>
+        <button>UPDATE</button>
+    </form>
+
+</main>
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+
+    let fetchUrl = `/api/book?bookId=${urlSearchParams.get("bookId")}`;
+    fetch(fetchUrl)
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (text) {
+            document.getElementById("data").innerHTML = text;
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library | List All Authors</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<main>
+    <h1>Library - List All Authors</h1>
+    <ul id="data"></ul>
+</main>
+</body>
+<script>
+    fetch("/api/authors")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        /*
+        Server should return html like this (for C-D):
+        <li>author name</li>
+        <li>author name</li>
+        ...
+        Server should return html like this (for A-B)
+        <li>author name <a href="books.html?authorId=id>[ books ]</a> <a href="editAuthor.html?authorId=id>[ edit ]</a></li>
+        <li>author name <a href="books.html?authorId=id>[ books ]</a> <a href="editAuthor.html?authorId=id>[ edit ]</a></li>
+        ...
+        */
+        document.getElementById("data").innerHTML = text;
+    });
+</script>
+
+</html>

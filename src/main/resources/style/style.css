@@ -1,0 +1,7 @@
+main{
+    margin: 50px;
+}
+
+li *{
+    margin: 5px;
+}

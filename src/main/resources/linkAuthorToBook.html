@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library | Link Author To Book</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<main>
+    <h1>Library - Link Author To Book</h1>
+    <form method="POST" action="/api/linkAuthorToBook">
+        <input type="hidden" name="bookId" id="bookId"/>
+        <label for="author">Author: </label><select name="authorId" id="author"></select>
+
+        <button>Link</button>
+    </form>
+</main>
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    document.getElementById("bookId").value = urlSearchParams.get("bookId")
+
+    fetch("/api/authorOptions")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        document.getElementById("author").innerHTML = text;
+    });
+</script>
+
+</body>
+</html>

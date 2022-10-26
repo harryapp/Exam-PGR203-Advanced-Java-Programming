@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library | Add Book</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<main>
+    <h1>Library - Add new Book</h1>
+    <form method="POST" action="/api/book">
+        <label for="author">Author: </label><select name="authorId" id="author"></select>
+        <label>Title: <input type="text" name="title"/></label>
+        <label>Description: <input type="text" name="description"/></label>
+        <button>Add</button>
+    </form>
+</main>
+<script>
+    fetch("/api/authorOptions")
+        .then(function (response) {
+            return response.text();
+        }).then(function (text) {
+        document.getElementById("author").innerHTML = text;
+    });
+</script>
+</body>
+
+</html>
